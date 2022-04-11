@@ -2,12 +2,16 @@ import random
 
 
 def word_jumble(word):
+    """Функция перемешивания слов"""
+    
     chars_list = list(word)
     random.shuffle(chars_list)
     return ''.join(chars_list)
 
 
 def read_top():
+    """Функция чтения топа и выдачи результатов"""
+    
     with open('top.txt') as f:
         total_games = 0
         max_score = 0
@@ -24,6 +28,8 @@ def read_top():
 
 
 def write_top(name, score):
+    """Функция записи в топ счета и имени"""
+    
     with open('top.txt', 'a') as f:
         f.write(f"{name}:{score}\n")
 
@@ -32,7 +38,7 @@ username = input("Введите ваше имя\n")
 user_score = 0
 
 with open('words.txt') as file:
-    for word in file:
+    for word in file:  # цикл перебора слов из файла построчно
         clear_word = word.rstrip()
         jumble_word = word_jumble(clear_word)
         print(f"Угадайте слово: {jumble_word}")
